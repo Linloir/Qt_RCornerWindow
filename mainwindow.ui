@@ -28,7 +28,7 @@
      <number>0</number>
     </property>
     <item row="0" column="0">
-     <layout class="QGridLayout" name="mainLayout">
+     <layout class="QVBoxLayout" name="verticalLayout">
       <property name="leftMargin">
        <number>30</number>
       </property>
@@ -41,8 +41,38 @@
       <property name="bottomMargin">
        <number>30</number>
       </property>
-      <item row="0" column="0">
-       <widget class="QWidget" name="mainWidget" native="true"/>
+      <item>
+       <widget class="QWidget" name="mainWidget" native="true">
+        <widget class="QPushButton" name="showBtn">
+         <property name="geometry">
+          <rect>
+           <x>580</x>
+           <y>270</y>
+           <width>142</width>
+           <height>40</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>show</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="hideBtn">
+         <property name="geometry">
+          <rect>
+           <x>580</x>
+           <y>200</y>
+           <width>142</width>
+           <height>40</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>hide</string>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </widget>
       </item>
      </layout>
     </item>

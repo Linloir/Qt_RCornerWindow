@@ -25,7 +25,8 @@ void MainWindow::Init(){
     ui->mainWidget->setMask(mask);
 
     QString mainStyle;
-    mainStyle = "background-color:" + mainBackGround.name() + QString::asprintf(";border-radius:%dpx", cornerRadius);
+    ui->mainWidget->setObjectName("mainWidget");
+    mainStyle = "QWidget#mainWidget{background-color:" + mainBackGround.name() + QString::asprintf(";border-radius:%dpx", cornerRadius) + "}";
     ui->mainWidget->setStyleSheet(mainStyle);
 
     QGraphicsDropShadowEffect *windowShadow = new QGraphicsDropShadowEffect(this);
@@ -40,10 +41,25 @@ void MainWindow::Init(){
     border->move(ui->mainWidget->pos() - QPoint(1, 1));
     border->resize(ui->mainWidget->size() + QSize(2, 2));
     QString borderStyle;
-    borderStyle = "border:1.5px solid #737373; border-radius:" + QString::asprintf("%d",cornerRadius) + "px";
+    borderStyle = "background-color:#00FFFFFF;border:1.5px solid #686868; border-radius:" + QString::asprintf("%d",cornerRadius) + "px";
     border->setStyleSheet(borderStyle);
+    border->setAttribute(Qt::WA_TransparentForMouseEvents);
     border->show();
     /*****************************************************************/
+
+    SlidePage *page = new SlidePage(cornerRadius, "SETTINGS", ui->mainWidget);//test
+    page->show();
+
+    //ui->showBtn->setParent(this);
+    //ui->hideBtn->setParent(this);
+    //ui->showBtn->raise();
+    //ui->hideBtn->raise();
+    //ui->showBtn->move(500, 100);
+    //ui->hideBtn->move(500, 150);
+    //ui->showBtn->show();
+    //ui->hideBtn->show();
+    connect(ui->showBtn, SIGNAL(clicked()), page, SLOT(slideIn()));
+    connect(ui->hideBtn, SIGNAL(clicked()), page, SLOT(slideOut()));
 }
 
 MainWindow::~MainWindow()
